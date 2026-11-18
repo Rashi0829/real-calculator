@@ -1,0 +1,65 @@
+
+import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+
+  const [display, setDisplay] = useState("");
+
+  return (
+    <div className="calculator">
+
+      <h1>My Calculator</h1>
+
+      <h2>{display || "0"}</h2>
+
+      <button onClick={() => setDisplay("")}>C</button>
+
+      <button onClick={() => setDisplay(display.slice(0, -1))}>
+        DEL
+      </button>
+
+      <button onClick={() => setDisplay(display + "/")}>/</button>
+
+      <button onClick={() => setDisplay(display + "*")}>*</button>
+
+      <br /><br />
+
+      <button onClick={() => setDisplay(display + "7")}>7</button>
+      <button onClick={() => setDisplay(display + "8")}>8</button>
+      <button onClick={() => setDisplay(display + "9")}>9</button>
+      <button onClick={() => setDisplay(display + "-")}>-</button>
+
+      <br /><br />
+
+      <button onClick={() => setDisplay(display + "4")}>4</button>
+      <button onClick={() => setDisplay(display + "5")}>5</button>
+      <button onClick={() => setDisplay(display + "6")}>6</button>
+      <button onClick={() => setDisplay(display + "+")}>+</button>
+
+      <br /><br />
+
+      <button onClick={() => setDisplay(display + "1")}>1</button>
+      <button onClick={() => setDisplay(display + "2")}>2</button>
+      <button onClick={() => setDisplay(display + "3")}>3</button>
+
+      <br /><br />
+
+      <button onClick={() => setDisplay(display + "0")}>0</button>
+      <button onClick={() => setDisplay(display + ".")}>.</button>
+
+      <button onClick={() => {
+        try {
+          setDisplay(String(eval(display)));
+        } catch {
+          setDisplay("Error");
+        }
+      }}>
+        =
+      </button>
+
+    </div>
+  );
+}
+
+export default App;
